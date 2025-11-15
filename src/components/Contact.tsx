@@ -97,28 +97,28 @@ const Contact: React.FC = () => {
       title: "Email",
       value: "lekumirlind@gmail.com",
       link: "mailto:lekumirlind@gmail.com",
-      color: "from-purple-500 to-purple-600",
+      color: "text-primary",
     },
     {
       icon: <FaPhone />,
       title: "Phone",
       value: "+383 (49) 425-136",
       link: "tel:+38349425136",
-      color: "from-blue-500 to-blue-600",
+      color: "text-primary",
     },
     {
       icon: <FaMapMarkerAlt />,
       title: "Location",
       value: "Drenas, Kosovo",
       link: "#",
-      color: "from-green-500 to-green-600",
+      color: "text-primary",
     },
     {
       icon: <FaLinkedin />,
       title: "LinkedIn",
       value: "mirlind-leku",
       link: "https://linkedin.com/in/mirlind-leku",
-      color: "from-blue-500 to-blue-600",
+      color: "text-primary",
     },
   ];
 
@@ -127,19 +127,19 @@ const Contact: React.FC = () => {
       name: "GitHub",
       icon: <FaGithub />,
       url: "https://github.com/mirlindleku",
-      color: "hover:text-gray-400",
+      color: "hover:text-primary",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
       url: "https://linkedin.com/in/mirlind-leku",
-      color: "hover:text-blue-400",
+      color: "hover:text-primary",
     },
     {
       name: "Email",
       icon: <FaEnvelope />,
       url: "mailto:lekumirlind@gmail.com",
-      color: "hover:text-purple-400",
+      color: "hover:text-accent",
     },
   ];
 
@@ -148,11 +148,11 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Get In <span className="text-teal-400">Touch</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Get In <span className="text-primary">Touch</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 mx-auto mb-8"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             I&apos;m always open to discussing new opportunities, interesting
             projects, or just having a chat about technology
           </p>
@@ -161,8 +161,8 @@ const Contact: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Column - Contact Form */}
           <div className={`${isVisible ? "animate-fade-in" : "opacity-0"}`}>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-white mb-6">
+            <div className="bg-card backdrop-blur-sm border border-border rounded-2xl p-8">
+              <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Send Me a Message
               </h3>
 
@@ -171,7 +171,7 @@ const Contact: React.FC = () => {
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-sm font-medium text-muted-foreground mb-2"
                     >
                       Your Name
                     </label>
@@ -182,7 +182,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-teal-500"
+                      className="bg-input border-border text-foreground placeholder-muted-foreground focus:ring-ring"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -190,7 +190,7 @@ const Contact: React.FC = () => {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-sm font-medium text-muted-foreground mb-2"
                     >
                       Email Address
                     </label>
@@ -201,7 +201,7 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-teal-500"
+                      className="bg-input border-border text-foreground placeholder-muted-foreground focus:ring-ring"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -210,7 +210,7 @@ const Contact: React.FC = () => {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-medium text-gray-300 mb-2"
+                    className="block text-sm font-medium text-muted-foreground mb-2"
                   >
                     Subject
                   </label>
@@ -221,7 +221,7 @@ const Contact: React.FC = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-teal-500"
+                    className="bg-input border-border text-foreground placeholder-muted-foreground focus:ring-ring"
                     placeholder="What's this about?"
                   />
                 </div>
@@ -229,7 +229,7 @@ const Contact: React.FC = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-300 mb-2"
+                    className="block text-sm font-medium text-muted-foreground mb-2"
                   >
                     Message
                   </label>
@@ -240,7 +240,7 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="bg-white/10 border-white/20 text-white placeholder-gray-400 focus:ring-teal-500 resize-none"
+                    className="bg-input border-border text-foreground placeholder-muted-foreground focus:ring-ring resize-none"
                     placeholder="Tell me more about your project or inquiry..."
                   />
                 </div>
@@ -248,12 +248,12 @@ const Contact: React.FC = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold shadow-lg hover:shadow-xl"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg hover:shadow-xl"
                   size="lg"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                      <div className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2"></div>
                       Sending...
                     </>
                   ) : (
@@ -287,7 +287,7 @@ const Contact: React.FC = () => {
                 isVisible ? "animate-fade-in animation-delay-200" : "opacity-0"
               }`}
             >
-              <h3 className="text-2xl font-semibold text-white mb-6">
+              <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Contact Information
               </h3>
               <div className="space-y-4">
@@ -295,16 +295,18 @@ const Contact: React.FC = () => {
                   <a
                     key={info.title}
                     href={info.link}
-                    className="flex items-center space-x-4 p-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl hover:bg-white/10 transition-all duration-300 group"
+                    className="flex items-center space-x-4 p-4 bg-card backdrop-blur-sm border border-border rounded-xl hover:bg-card/80 transition-all duration-300 group"
                   >
                     <div
-                      className={`w-12 h-12 bg-gradient-to-br ${info.color} rounded-lg flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-primary-foreground text-xl group-hover:scale-110 transition-transform duration-300`}
                     >
                       {info.icon}
                     </div>
                     <div>
-                      <h4 className="text-white font-medium">{info.title}</h4>
-                      <p className="text-gray-400 group-hover:text-white transition-colors">
+                      <h4 className="text-foreground font-medium">
+                        {info.title}
+                      </h4>
+                      <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                         {info.value}
                       </p>
                     </div>
@@ -319,7 +321,7 @@ const Contact: React.FC = () => {
                 isVisible ? "animate-fade-in animation-delay-400" : "opacity-0"
               }`}
             >
-              <h3 className="text-2xl font-semibold text-white mb-6">
+              <h3 className="text-2xl font-semibold text-foreground mb-6">
                 Follow Me
               </h3>
               <div className="flex space-x-4">
@@ -327,7 +329,7 @@ const Contact: React.FC = () => {
                   <a
                     key={social.name}
                     href={social.url}
-                    className={`w-14 h-14 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center text-gray-300 text-xl hover:bg-white/20 transform hover:scale-110 transition-all duration-300 ${social.color}`}
+                    className={`w-14 h-14 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground text-xl hover:bg-primary hover:text-primary-foreground transform hover:scale-110 transition-all duration-300`}
                     title={social.name}
                   >
                     {social.icon}
@@ -342,11 +344,11 @@ const Contact: React.FC = () => {
                 isVisible ? "animate-fade-in animation-delay-600" : "opacity-0"
               }`}
             >
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <h4 className="text-xl font-semibold text-white mb-4">
+              <div className="bg-card backdrop-blur-sm border border-border rounded-2xl p-6">
+                <h4 className="text-xl font-semibold text-foreground mb-4">
                   Let&apos;s Work Together
                 </h4>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4">
                   I&apos;m currently available for freelance work and full-time
                   opportunities. Whether you have a project in mind or just want
                   to chat, feel free to reach out!

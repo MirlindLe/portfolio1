@@ -24,10 +24,10 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0b0b0b] via-[#0f172a] to-[#0b0b0b] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-teal-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <h2 className="text-2xl font-bold text-white">
+          <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <h2 className="text-2xl font-bold text-foreground">
             Loading Portfolio...
           </h2>
         </div>
@@ -36,7 +36,7 @@ export default function Home() {
   }
 
   return (
-    <div className="App min-h-screen bg-gradient-to-br from-[#0b0b0b] via-[#0f172a] to-[#0b0b0b]">
+    <div className="App min-h-screen bg-background">
       <Navbar />
       <main>
         <Hero />

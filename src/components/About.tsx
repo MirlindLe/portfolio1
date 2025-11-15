@@ -26,25 +26,6 @@ const About: React.FC = () => {
     clients: 0,
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          animateCounts();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    const element = document.getElementById("about");
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const animateCounts = () => {
     const targets = { projects: 3, experience: 4, skills: 16, clients: 5 };
     const duration = 2000;
@@ -65,6 +46,25 @@ const About: React.FC = () => {
       }, step);
     });
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          animateCounts();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const element = document.getElementById("about");
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const stats = [
     {
@@ -98,10 +98,10 @@ const About: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            About <span className="text-teal-400">Me</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            About <span className="text-primary">Me</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -110,9 +110,9 @@ const About: React.FC = () => {
             {/* Profile Image */}
             <div className="relative">
               <div className="w-80 h-80 mx-auto relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-                <div className="relative w-full h-full bg-gradient-to-br from-teal-500 to-cyan-500 rounded-full flex items-center justify-center">
-                  <FaUser size={120} className="text-white" />
+                <div className="absolute inset-0 bg-primary rounded-full blur-xl opacity-30 animate-pulse"></div>
+                <div className="relative w-full h-full bg-primary rounded-full flex items-center justify-center">
+                  <FaUser size={120} className="text-primary-foreground" />
                 </div>
               </div>
             </div>
@@ -127,14 +127,16 @@ const About: React.FC = () => {
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="text-3xl text-teal-400 mb-2 flex justify-center">
+                  <div className="text-3xl text-primary mb-2 flex justify-center">
                     {stat.icon}
                   </div>
-                  <div className="text-3xl font-bold text-white mb-1">
+                  <div className="text-3xl font-bold text-foreground mb-1">
                     {stat.value}
                     {stat.suffix}
                   </div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -186,63 +188,65 @@ const About: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center">
-                  <FaBriefcase className="text-cyan-400" size={20} />
+              <div className="flex gap-4 items-start">
+                <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
+                  <FaBriefcase className="text-primary" size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-semibold">
+                  <h4 className="text-foreground font-semibold">
                     Full Stack Developer
                   </h4>
-                  <p className="text-gray-400">Freelance • 2022-Present</p>
+                  <p className="text-muted-foreground">
+                    Freelance • 2022-Present
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Personal Info */}
             <div
-              className={`${
+              className={
                 isVisible ? "animate-fade-in animation-delay-800" : "opacity-0"
-              }`}
+              }
             >
-              <h4 className="text-xl font-semibold text-white mb-4">
+              <h4 className="text-xl font-semibold text-foreground mb-4">
                 Personal Information
               </h4>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Name:</span>
-                  <span className="text-white">Mirlind Leku</span>
+                  <span className="text-muted-foreground">Name:</span>
+                  <span className="text-foreground">Mirlind Leku</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Age:</span>
-                  <span className="text-white">24 Years</span>
+                  <span className="text-muted-foreground">Age:</span>
+                  <span className="text-foreground">24 Years</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Location:</span>
-                  <span className="text-white">Drenas, Kosovo</span>
+                  <span className="text-muted-foreground">Location:</span>
+                  <span className="text-foreground">Drenas, Kosovo</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">Freelance:</span>
-                  <span className="text-green-400">Available</span>
+                  <span className="text-muted-foreground">Freelance:</span>
+                  <span className="text-primary">Available</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">LinkedIn:</span>
+                  <span className="text-muted-foreground">LinkedIn:</span>
                   <a
                     href="https://linkedin.com/in/mirlind-leku"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                    className="text-primary hover:text-primary/80 transition-colors"
                   >
                     mirlind-leku
                   </a>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-400">GitHub:</span>
+                  <span className="text-muted-foreground">GitHub:</span>
                   <a
                     href="https://github.com/mirlindleku"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white transition-colors"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
                   >
                     mirlindleku
                   </a>
@@ -252,20 +256,20 @@ const About: React.FC = () => {
 
             {/* CV Download Section */}
             <div
-              className={`${
+              className={
                 isVisible ? "animate-fade-in animation-delay-1000" : "opacity-0"
-              }`}
+              }
             >
-              <div className="mt-8 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">
-                <h4 className="text-xl font-semibold text-white mb-4 text-center">
+              <div className="mt-8 p-6 bg-card backdrop-blur-sm border border-border rounded-2xl">
+                <h4 className="text-xl font-semibold text-foreground mb-4 text-center">
                   Download My Resume
                 </h4>
-                <p className="text-gray-300 text-center mb-6">
+                <p className="text-muted-foreground text-center mb-6">
                   Get a detailed overview of my skills, experience, and projects
                 </p>
                 <div className="flex justify-center">
                   <Button
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                     size="lg"
                     asChild
                   >

@@ -149,12 +149,17 @@ const projects: Project[] = [
 ];
 
 const Projects: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(() => {
+    // Initialize visibility based on screen size
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      return true;
+    }
+    return false;
+  });
 
   useEffect(() => {
-    // Ensure visibility on small screens
+    // Skip intersection observer on small screens
     if (typeof window !== "undefined" && window.innerWidth < 768) {
-      setIsVisible(true);
       return;
     }
 
@@ -180,11 +185,11 @@ const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            My <span className="text-teal-400">Projects</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            My <span className="text-primary">Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 mx-auto mb-8"></div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Here are some of the projects I&apos;ve built to showcase my skills
             and creativity
           </p>
@@ -199,7 +204,7 @@ const Projects: React.FC = () => {
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className={`group relative bg-white/5 backdrop-blur-sm border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-500 md:transform md:hover:scale-105 md:hover:-translate-y-2 ${
+              className={`group relative bg-card backdrop-blur-sm border-border rounded-2xl overflow-hidden hover:bg-card/80 transition-all duration-500 md:transform md:hover:scale-105 md:hover:-translate-y-2 ${
                 isVisible ? "animate-fade-in" : "opacity-0"
               }`}
               style={{ animationDelay: `${index * 150}ms` }}
@@ -214,7 +219,7 @@ const Projects: React.FC = () => {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   {project.featured && (
-                    <Badge className="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-blue-500 border-0">
+                    <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground border-0">
                       Featured
                     </Badge>
                   )}
@@ -223,10 +228,10 @@ const Projects: React.FC = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     {project.description}
                   </p>
 
@@ -236,7 +241,7 @@ const Projects: React.FC = () => {
                       <Badge
                         key={techIndex}
                         variant="outline"
-                        className="bg-white/10 text-gray-300 border-white/20 hover:bg-white/20"
+                        className="bg-card text-muted-foreground border-border hover:bg-card/80"
                       >
                         <span className="flex items-center gap-2">
                           {project.icons[techIndex]}
@@ -253,7 +258,7 @@ const Projects: React.FC = () => {
                 <div className="flex gap-3 w-full">
                   <Button
                     variant="outline"
-                    className="flex-1 bg-white/10 text-gray-300 border-white/20 hover:bg-white/20"
+                    className="flex-1 bg-card text-muted-foreground border-border hover:bg-card/80"
                     asChild
                   >
                     <a
@@ -278,17 +283,17 @@ const Projects: React.FC = () => {
             isVisible ? "animate-fade-in animation-delay-1000" : "opacity-0"
           }`}
         >
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold text-white mb-4">
+          <div className="bg-card backdrop-blur-sm border border-border rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-semibold text-foreground mb-4">
               Have a Project in Mind?
             </h3>
-            <p className="text-gray-300 mb-6">
+            <p className="text-muted-foreground mb-6">
               I&apos;m always interested in new opportunities and exciting
               projects. Let&apos;s discuss how we can work together to bring
               your ideas to life.
             </p>
             <Button
-              className="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="px-8 py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               size="lg"
             >
               Let&apos;s Talk

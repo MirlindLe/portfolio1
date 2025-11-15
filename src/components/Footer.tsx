@@ -23,19 +23,19 @@ const Footer: React.FC = () => {
       name: "GitHub",
       icon: <FaGithub />,
       url: "https://github.com/mirlindleku",
-      color: "hover:text-gray-400",
+      color: "hover:text-primary",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
       url: "https://linkedin.com/in/mirlind-leku",
-      color: "hover:text-blue-400",
+      color: "hover:text-primary",
     },
     {
       name: "Email",
       icon: <FaEnvelope />,
       url: "mailto:lekumirlind@gmail.com",
-      color: "hover:text-purple-400",
+      color: "hover:text-accent",
     },
   ];
 
@@ -55,13 +55,15 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-neutral-900/30 backdrop-blur-sm border-t border-slate-700/40">
+    <footer className="bg-card/30 backdrop-blur-sm border-t border-border">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">Mirlind Leku</h3>
-            <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Mirlind Leku
+            </h3>
+            <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
               A passionate full-stack developer dedicated to creating innovative
               digital solutions and turning ideas into reality through code and
               creativity.
@@ -71,7 +73,7 @@ const Footer: React.FC = () => {
                 <a
                   key={social.name}
                   href={social.url}
-                  className={`w-12 h-12 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center text-gray-300 text-xl hover:bg-white/20 transform hover:scale-110 transition-all duration-300 ${social.color}`}
+                  className={`w-12 h-12 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground text-xl hover:bg-primary hover:text-primary-foreground transform hover:scale-110 transition-all duration-300`}
                   title={social.name}
                 >
                   {social.icon}
@@ -82,7 +84,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">
+            <h4 className="text-lg font-semibold text-foreground mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -90,7 +92,7 @@ const Footer: React.FC = () => {
                 <li key={link.name}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-1 transform"
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-300 hover:translate-x-1 transform"
                   >
                     {link.name}
                   </button>
@@ -101,14 +103,14 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">
+            <h4 className="text-lg font-semibold text-foreground mb-4">
               Get in Touch
             </h4>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-muted-foreground">
               <li>
                 <a
                   href="mailto:lekumirlind@gmail.com"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-foreground transition-colors"
                 >
                   lekumirlind@gmail.com
                 </a>
@@ -116,12 +118,12 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="tel:+38349425136"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-foreground transition-colors"
                 >
                   +383 (49) 425-136
                 </a>
               </li>
-              <li className="hover:text-white transition-colors">
+              <li className="hover:text-foreground transition-colors">
                 Drenas, Kosovo
               </li>
             </ul>
@@ -129,12 +131,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10">
+        <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
+            <p className="text-muted-foreground text-sm text-center md:text-left">
               © {currentYear} Mirlind Leku. All rights reserved.
             </p>
-            <p className="text-gray-400 text-sm flex items-center gap-2">
+            <p className="text-muted-foreground text-sm flex items-center gap-2">
               Made with <FaHeart className="text-red-500 animate-pulse" /> and
               lots of ☕
             </p>
