@@ -1,0 +1,148 @@
+"use client";
+
+import React from "react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from "react-icons/fa";
+
+interface SocialLink {
+  name: string;
+  icon: React.ReactElement;
+  url: string;
+  color: string;
+}
+
+interface QuickLink {
+  name: string;
+  href: string;
+}
+
+const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks: SocialLink[] = [
+    {
+      name: "GitHub",
+      icon: <FaGithub />,
+      url: "https://github.com/mirlindleku",
+      color: "hover:text-gray-400",
+    },
+    {
+      name: "LinkedIn",
+      icon: <FaLinkedin />,
+      url: "https://linkedin.com/in/mirlind-leku",
+      color: "hover:text-blue-400",
+    },
+    {
+      name: "Email",
+      icon: <FaEnvelope />,
+      url: "mailto:lekumirlind@gmail.com",
+      color: "hover:text-purple-400",
+    },
+  ];
+
+  const quickLinks: QuickLink[] = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <footer className="bg-neutral-900/30 backdrop-blur-sm border-t border-slate-700/40">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          {/* Brand Section */}
+          <div className="md:col-span-2">
+            <h3 className="text-2xl font-bold text-white mb-4">Mirlind Leku</h3>
+            <p className="text-gray-400 leading-relaxed mb-6 max-w-md">
+              A passionate full-stack developer dedicated to creating innovative
+              digital solutions and turning ideas into reality through code and
+              creativity.
+            </p>
+            <div className="flex space-x-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  className={`w-12 h-12 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center text-gray-300 text-xl hover:bg-white/20 transform hover:scale-110 transition-all duration-300 ${social.color}`}
+                  title={social.name}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <button
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 hover:translate-x-1 transform"
+                  >
+                    {link.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">
+              Get in Touch
+            </h4>
+            <ul className="space-y-2 text-gray-400">
+              <li>
+                <a
+                  href="mailto:lekumirlind@gmail.com"
+                  className="hover:text-white transition-colors"
+                >
+                  lekumirlind@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+38349425136"
+                  className="hover:text-white transition-colors"
+                >
+                  +383 (49) 425-136
+                </a>
+              </li>
+              <li className="hover:text-white transition-colors">
+                Drenas, Kosovo
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-400 text-sm text-center md:text-left">
+              © {currentYear} Mirlind Leku. All rights reserved.
+            </p>
+            <p className="text-gray-400 text-sm flex items-center gap-2">
+              Made with <FaHeart className="text-red-500 animate-pulse" /> and
+              lots of ☕
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
