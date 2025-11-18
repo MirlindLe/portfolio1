@@ -27,10 +27,8 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", icon: <FaHome />, href: "#home" },
     { name: "About", icon: <FaUser />, href: "#about" },
     { name: "Skills", icon: <FaCode />, href: "#skills" },
-    { name: "Education", icon: <FaUser />, href: "#education" },
     { name: "Projects", icon: <FaBriefcase />, href: "#projects" },
     { name: "Contact", icon: <FaEnvelope />, href: "#contact" },
   ];

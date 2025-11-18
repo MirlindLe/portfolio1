@@ -1,165 +1,64 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { FaCode } from "react-icons/fa";
 import {
-  FaUser,
-  FaGraduationCap,
-  FaBriefcase,
-  FaHeart,
-  FaCode,
-  FaLightbulb,
-  FaDownload,
-} from "react-icons/fa";
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiMongodb,
+  SiTailwindcss,
+  SiDotnet,
+} from "react-icons/si";
 import { Button } from "@/components/ui/button";
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [counts, setCounts] = useState<{
-    projects: number;
-    experience: number;
-    skills: number;
-    clients: number;
-  }>({
-    projects: 0,
-    experience: 0,
-    skills: 0,
-    clients: 0,
-  });
-
-  const animateCounts = () => {
-    const targets = { projects: 3, experience: 4, skills: 16, clients: 5 };
-    const duration = 2000;
-    const step = duration / 60;
-
-    Object.keys(targets).forEach((key) => {
-      let current = 0;
-      const increment =
-        targets[key as keyof typeof targets] / (duration / step);
-
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= targets[key as keyof typeof targets]) {
-          current = targets[key as keyof typeof targets];
-          clearInterval(timer);
-        }
-        setCounts((prev) => ({ ...prev, [key]: Math.floor(current) }));
-      }, step);
-    });
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          animateCounts();
         }
       },
       { threshold: 0.3 }
     );
 
     const element = document.getElementById("about");
-    if (element) {
-      observer.observe(element);
-    }
-
+    if (element) observer.observe(element);
     return () => observer.disconnect();
   }, []);
-
-  const stats = [
-    {
-      icon: <FaCode />,
-      label: "Projects Completed",
-      value: counts.projects,
-      suffix: "+",
-    },
-    {
-      icon: <FaBriefcase />,
-      label: "Years Experience",
-      value: counts.experience,
-      suffix: "+",
-    },
-    {
-      icon: <FaLightbulb />,
-      label: "Skills Mastered",
-      value: counts.skills,
-      suffix: "+",
-    },
-    {
-      icon: <FaHeart />,
-      label: "Happy Clients",
-      value: counts.clients,
-      suffix: "+",
-    },
-  ];
 
   return (
     <section id="about" className="py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            About <span className="text-primary">Me</span>
+        <div className="text-center mb-6">
+          <div className="inline-block px-6 bg-primary/10 rounded-full mb-4">
+            <p className="text-primary font-medium">About Me</p>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
+            Everything About <span className="text-primary">Mirlind</span>
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Image and Stats */}
-          <div className="space-y-8">
-            {/* Profile Image */}
-            <div className="relative">
-              <div className="w-80 h-80 mx-auto relative">
-                <div className="absolute inset-0 bg-primary rounded-full blur-xl opacity-30 animate-pulse"></div>
-                <div className="relative w-full h-full bg-primary rounded-full flex items-center justify-center">
-                  <FaUser size={120} className="text-primary-foreground" />
-                </div>
-              </div>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className={`text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 ${
-                    isVisible ? "animate-fade-in" : "opacity-0"
-                  }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="text-3xl text-primary mb-2 flex justify-center">
-                    {stat.icon}
-                  </div>
-                  <div className="text-3xl font-bold text-foreground mb-1">
-                    {stat.value}
-                    {stat.suffix}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Column - Content */}
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Content */}
+          <div className="space-y-6 flex flex-col justify-center">
             <div
-              className={`${
-                isVisible ? "animate-fade-in animation-delay-400" : "opacity-0"
-              }`}
+              className={
+                isVisible ? "animate-fade-in animation-delay-200" : "opacity-0"
+              }
             >
-              <h3 className="text-2xl font-semibold text-white mb-4">
-                Self-Taught Programmer & Full-Stack Developer
-              </h3>
-              <p className="text-gray-300 leading-relaxed mb-6">
+              <p className="text-muted-foreground leading-relaxed mb-6">
                 I&apos;m a passionate self-taught programmer with expertise in
                 both frontend and backend technologies. My journey includes
                 building full-stack applications with Node.js, Express, MongoDB,
                 Next.js, TypeScript, and Django. I love creating innovative
                 solutions and turning ideas into reality through code.
               </p>
-              <p className="text-gray-300 leading-relaxed mb-6">
+              <p className="text-muted-foreground leading-relaxed">
                 My self-directed learning approach has led me to master multiple
                 technologies including React, Next.js, Node.js, Python, Django,
                 and .NET. I&apos;m constantly exploring new technologies and
@@ -168,117 +67,76 @@ const About: React.FC = () => {
               </p>
             </div>
 
-            {/* Education & Experience */}
             <div
-              className={`space-y-4 ${
-                isVisible ? "animate-fade-in animation-delay-600" : "opacity-0"
-              }`}
+              className={
+                isVisible ? "animate-fade-in animation-delay-400" : "opacity-0"
+              }
             >
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center">
-                  <FaGraduationCap className="text-teal-400" size={20} />
-                </div>
-                <div>
-                  <h4 className="text-white font-semibold">
-                    Self-Taught Programmer
-                  </h4>
-                  <p className="text-gray-400">
-                    Online Learning • 2020-Present
-                  </p>
-                </div>
-              </div>
+              <Button
+                className="px-8 py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300"
+                size="lg"
+                asChild
+              >
+                <a href="/about">More About Me</a>
+              </Button>
+            </div>
+          </div>
 
-              <div className="flex gap-4 items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                  <FaBriefcase className="text-primary" size={20} />
-                </div>
-                <div>
-                  <h4 className="text-foreground font-semibold">
-                    Full Stack Developer
-                  </h4>
-                  <p className="text-muted-foreground">
-                    Freelance • 2022-Present
-                  </p>
-                </div>
+          {/* Right Column - Decorative Tech Icons */}
+          <div className="relative h-[500px] lg:h-[600px]">
+            {/* Central code icon */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-xl animate-float">
+                <FaCode className="text-primary text-5xl" />
               </div>
             </div>
 
-            {/* Personal Info */}
-            <div
-              className={
-                isVisible ? "animate-fade-in animation-delay-800" : "opacity-0"
-              }
-            >
-              <h4 className="text-xl font-semibold text-foreground mb-4">
-                Personal Information
-              </h4>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Name:</span>
-                  <span className="text-foreground">Mirlind Leku</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Age:</span>
-                  <span className="text-foreground">24 Years</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Location:</span>
-                  <span className="text-foreground">Drenas, Kosovo</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Freelance:</span>
-                  <span className="text-primary">Available</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">LinkedIn:</span>
-                  <a
-                    href="https://linkedin.com/in/mirlind-leku"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 transition-colors"
-                  >
-                    mirlind-leku
-                  </a>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">GitHub:</span>
-                  <a
-                    href="https://github.com/mirlindleku"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    mirlindleku
-                  </a>
-                </div>
+            {/* React icon */}
+            <div className="absolute top-[10%] right-[20%] animate-float animation-delay-500">
+              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
+                <SiReact className="text-[#61DAFB] text-4xl" />
               </div>
             </div>
 
-            {/* CV Download Section */}
-            <div
-              className={
-                isVisible ? "animate-fade-in animation-delay-1000" : "opacity-0"
-              }
-            >
-              <div className="mt-8 p-6 bg-card backdrop-blur-sm border border-border rounded-2xl">
-                <h4 className="text-xl font-semibold text-foreground mb-4 text-center">
-                  Download My Resume
-                </h4>
-                <p className="text-muted-foreground text-center mb-6">
-                  Get a detailed overview of my skills, experience, and projects
-                </p>
-                <div className="flex justify-center">
-                  <Button
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                    size="lg"
-                    asChild
-                  >
-                    <a href="/Resume2.pdf" download="Mirlind_Leku_CV.pdf">
-                      <FaDownload />
-                      Download CV
-                    </a>
-                  </Button>
-                </div>
+            {/* Next.js icon */}
+            <div className="absolute top-[25%] left-[10%] animate-float animation-delay-1000">
+              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
+                <SiNextdotjs className="text-foreground text-4xl" />
+              </div>
+            </div>
+
+            {/* TypeScript icon */}
+            <div className="absolute top-[40%] right-[5%] animate-float animation-delay-1500">
+              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
+                <SiTypescript className="text-[#3178C6] text-4xl" />
+              </div>
+            </div>
+
+            {/* Node.js icon */}
+            <div className="absolute bottom-[30%] left-[5%] animate-float animation-delay-2000">
+              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
+                <SiNodedotjs className="text-[#339933] text-4xl" />
+              </div>
+            </div>
+
+            {/* MongoDB icon */}
+            <div className="absolute bottom-[20%] right-[15%] animate-float animation-delay-2500">
+              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
+                <SiMongodb className="text-[#47A248] text-4xl" />
+              </div>
+            </div>
+
+            {/* Tailwind icon */}
+            <div className="absolute top-[60%] left-[20%] animate-float animation-delay-3000">
+              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
+                <SiTailwindcss className="text-[#06B6D4] text-4xl" />
+              </div>
+            </div>
+
+            {/* .NET */}
+            <div className="absolute top-[60%] left-[20%] animate-float animation-delay-3000">
+              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
+                <SiDotnet className="text-foreground text-4xl" />
               </div>
             </div>
           </div>

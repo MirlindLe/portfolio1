@@ -1,42 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaGit,
-} from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiMongodb,
-  SiExpress,
-  SiTypescript,
-  SiNextdotjs,
-} from "react-icons/si";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-
-interface Skill {
-  name: string;
-  icon: React.ReactElement;
-  category: string;
-}
 
 const Skills: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(() => {
-    // Initialize visibility based on screen size
     if (typeof window !== "undefined" && window.innerWidth < 768) {
       return true;
     }
     return false;
   });
-  const [activeCategory, setActiveCategory] = useState<string>("all");
 
   useEffect(() => {
-    // Skip intersection observer on small screens
     if (typeof window !== "undefined" && window.innerWidth < 768) {
       return;
     }
@@ -51,204 +25,184 @@ const Skills: React.FC = () => {
     );
 
     const element = document.getElementById("skills");
-    if (element) {
-      observer.observe(element);
-    }
-
+    if (element) observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
-  const categories = [
-    { id: "all", name: "All Skills" },
-    { id: "frontend", name: "Frontend" },
-    { id: "backend", name: "Backend" },
-    { id: "tools", name: "Tools & Others" },
-  ];
-
-  const skills: Skill[] = [
-    // Frontend
-    {
-      name: "HTML5",
-      icon: <FaHtml5 />,
-      category: "frontend",
-    },
-    {
-      name: "CSS3",
-      icon: <FaCss3Alt />,
-      category: "frontend",
-    },
-    {
-      name: "JavaScript",
-      icon: <FaJs />,
-      category: "frontend",
-    },
-    {
-      name: "React",
-      icon: <FaReact />,
-      category: "frontend",
-    },
-    {
-      name: "TypeScript",
-      icon: <SiTypescript />,
-      category: "frontend",
-    },
-    {
-      name: "Next.js",
-      icon: <SiNextdotjs />,
-      category: "frontend",
-    },
-    {
-      name: "Tailwind CSS",
-      icon: <SiTailwindcss />,
-      category: "frontend",
-    },
-
-    // Backend
-    {
-      name: "Node.js",
-      icon: <FaNodeJs />,
-      category: "backend",
-    },
-    {
-      name: "Express.js",
-      icon: <SiExpress />,
-      category: "backend",
-    },
-    {
-      name: "MongoDB",
-      icon: <SiMongodb />,
-      category: "backend",
-    },
-    {
-      name: "Django",
-      icon: <FaReact />,
-      category: "backend",
-    },
-    {
-      name: ".NET",
-      icon: <FaReact />,
-      category: "backend",
-    },
-    {
-      name: "C#",
-      icon: <FaReact />,
-      category: "backend",
-    },
-
-    // Tools & Others
-    {
-      name: "Git",
-      icon: <FaGit />,
-      category: "tools",
-    },
-    {
-      name: "GitHub",
-      icon: <FaGit />,
-      category: "tools",
-    },
-  ];
-
-  const filteredSkills =
-    activeCategory === "all"
-      ? skills
-      : skills.filter((skill) => skill.category === activeCategory);
+  const skillTree = {
+    frontend: [
+      "HTML",
+      "CSS",
+      "JAVASCRIPT",
+      "TYPESCRIPT",
+      "REACT",
+      "NEXT JS",
+      "ZUSTAND",
+      "Shadcn UI",
+      "TAILWIND CSS",
+    ],
+    backend: [
+      "NODE",
+      ".net",
+      "DJANGO",
+      "EXPRESS",
+      "REST API",
+      "ZOD VALIDATION",
+      "JWT/OAUTH",
+      "MySQL",
+      "MongoDB",
+      "STRIPE PAYMENTS",
+    ],
+    languages: ["JAVASCRIPT", "TYPESCRIPT", "PYTHON", "C++", "C#"],
+    tools: ["GIT", "GITHUB", "LINUX", "VERCEL"],
+  };
 
   return (
-    <section id="skills" className="py-20 px-4 relative">
+    <section id="skills" className="py-14 px-4 relative">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            My <span className="text-primary">Skills</span>
-          </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Here are the technologies and tools I work with to bring ideas to
-            life
-          </p>
-        </div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <Button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              variant={activeCategory === category.id ? "default" : "outline"}
-              className={`${
-                activeCategory === category.id
-                  ? "bg-primary hover:bg-primary/90 border-0"
-                  : "border-border text-muted-foreground hover:bg-card"
-              }`}
-              size="sm"
-            >
-              {category.name}
-            </Button>
-          ))}
-        </div>
-
-        {/* Skills Grid */}
-        <div className="flex items-center gap-3 flex-wrap justify-center">
-          {filteredSkills.map((skill, index) => (
-            <Badge
-              key={skill.name}
-              variant="outline"
-              className={`group relative px-4 py-2 text-base bg-card border-border hover:bg-card/80 transition-all duration-500 md:hover:scale-105 md:hover:-translate-y-2 ${
-                isVisible ? "animate-fade-in" : "opacity-0"
-              }`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-center gap-2">
-                <span className="text-lg">{skill.icon}</span>
-                <span className="text-foreground font-semibold group-hover:text-primary transition-colors">
-                  {skill.name}
-                </span>
+        {/* Skills Tree Structure */}
+        <div className="flex justify-center">
+          <div className="relative max-w-6xl w-full">
+            {/* MY SKILLS - Root Node */}
+            <div className="flex justify-center mb-12">
+              <div
+                className={`px-8 py-4 bg-card border-2 border-primary rounded-lg ${
+                  isVisible ? "animate-fade-in" : "opacity-0"
+                }`}
+              >
+                <h3 className="text-2xl font-bold text-foreground tracking-wider">
+                  MY SKILLS
+                </h3>
               </div>
-              {/* Hover Effect Overlay */}
-              <div className="absolute inset-0 bg-primary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-            </Badge>
-          ))}
-        </div>
+            </div>
 
-        {/* Additional Skills Info */}
-        <div
-          className={`mt-16 text-center ${
-            isVisible ? "animate-fade-in animation-delay-1000" : "opacity-0"
-          }`}
-        >
-          <div
-            className={`bg-card backdrop-blur-sm border border-border rounded-2xl p-8 max-w-4xl mx-auto ${
-              isVisible ? "animate-fade-in animation-delay-1000" : "opacity-0"
-            }`}
-          >
-            <h3 className="text-2xl font-semibold text-foreground mb-4">
-              Always Learning & Growing
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              I&apos;m constantly expanding my skill set and staying updated
-              with the latest technologies. Currently exploring advanced
-              concepts in cloud architecture, machine learning, and emerging web
-              technologies.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Badge
-                variant="outline"
-                className="px-4 py-2 bg-primary/20 text-primary border-primary/30"
+            {/* Connecting Lines Container */}
+            <div className="relative mb-8">
+              {/* Vertical line from root */}
+              <div className="absolute left-1/2 top-0 w-0.5 h-8 bg-border transform -translate-x-1/2"></div>
+
+              {/* Horizontal line connecting branches */}
+              <div className="absolute left-[15%] right-[15%] top-8 h-0.5 bg-border"></div>
+
+              {/* Vertical lines down to categories */}
+              <div className="absolute left-[20%] top-8 w-0.5 h-8 bg-border"></div>
+              <div className="absolute left-1/2 top-8 w-0.5 h-8 bg-border transform -translate-x-1/2"></div>
+              <div className="absolute right-[20%] top-8 w-0.5 h-8 bg-border"></div>
+            </div>
+
+            {/* Main Categories Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+              {/* Frontend */}
+              <div
+                className={`${
+                  isVisible
+                    ? "animate-fade-in animation-delay-200"
+                    : "opacity-0"
+                }`}
               >
-                Learning: Advanced React Patterns
-              </Badge>
-              <Badge
-                variant="outline"
-                className="px-4 py-2 bg-primary/20 text-primary border-primary/30"
+                <div className="text-center mb-6">
+                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                      FRONTEND
+                    </h4>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {skillTree.frontend.map((skill, index) => (
+                    <div
+                      key={skill}
+                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      style={{ animationDelay: `${(index + 2) * 50}ms` }}
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Backend */}
+              <div
+                className={`${
+                  isVisible
+                    ? "animate-fade-in animation-delay-400"
+                    : "opacity-0"
+                }`}
               >
-                Exploring: AI/ML Integration
-              </Badge>
-              <Badge
-                variant="outline"
-                className="px-4 py-2 bg-primary/20 text-primary border-primary/30"
+                <div className="text-center mb-6">
+                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                      BACKEND
+                    </h4>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {skillTree.backend.map((skill, index) => (
+                    <div
+                      key={skill}
+                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      style={{ animationDelay: `${(index + 4) * 50}ms` }}
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Languages */}
+              <div
+                className={`${
+                  isVisible
+                    ? "animate-fade-in animation-delay-600"
+                    : "opacity-0"
+                }`}
               >
-                Next: Cloud Architecture
-              </Badge>
+                <div className="text-center mb-6">
+                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                      LANGUAGES
+                    </h4>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {skillTree.languages.map((skill, index) => (
+                    <div
+                      key={skill}
+                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      style={{ animationDelay: `${(index + 6) * 50}ms` }}
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tools */}
+              <div
+                className={`${
+                  isVisible
+                    ? "animate-fade-in animation-delay-800"
+                    : "opacity-0"
+                }`}
+              >
+                <div className="text-center mb-6">
+                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                      TOOLS & PLATFORM
+                    </h4>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {skillTree.tools.map((skill, index) => (
+                    <div
+                      key={skill}
+                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      style={{ animationDelay: `${(index + 8) * 50}ms` }}
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
