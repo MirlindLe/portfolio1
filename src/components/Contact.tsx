@@ -314,51 +314,6 @@ const Contact: React.FC = () => {
                 ))}
               </div>
             </div>
-
-            {/* Social Links */}
-            <div
-              className={`${
-                isVisible ? "animate-fade-in animation-delay-400" : "opacity-0"
-              }`}
-            >
-              <h3 className="text-2xl font-semibold text-foreground mb-6">
-                Follow Me
-              </h3>
-              <div className="flex space-x-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    className={`w-14 h-14 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground text-xl hover:bg-primary hover:text-primary-foreground transform hover:scale-110 transition-all duration-300`}
-                    title={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Additional Info */}
-            <div
-              className={`${
-                isVisible ? "animate-fade-in animation-delay-600" : "opacity-0"
-              }`}
-            >
-              <div className="bg-card backdrop-blur-sm border border-border rounded-2xl p-6">
-                <h4 className="text-xl font-semibold text-foreground mb-4">
-                  Let&apos;s Work Together
-                </h4>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  I&apos;m currently available for freelance work and full-time
-                  opportunities. Whether you have a project in mind or just want
-                  to chat, feel free to reach out!
-                </p>
-                <div className="flex items-center gap-2 text-green-400">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  Available for new opportunities
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

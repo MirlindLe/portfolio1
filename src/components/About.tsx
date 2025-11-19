@@ -32,33 +32,30 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 px-4 relative">
+    <section id="about" className="py-12 sm:py-16 md:py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-6">
-          <div className="inline-block px-6 bg-primary/10 rounded-full mb-4">
-            <p className="text-primary font-medium">About Me</p>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2 px-4">
             Everything About <span className="text-primary">Mirlind</span>
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-6 flex flex-col justify-center">
+          <div className="space-y-4 sm:space-y-6 flex flex-col justify-center">
             <div
               className={
                 isVisible ? "animate-fade-in animation-delay-200" : "opacity-0"
               }
             >
-              <p className="text-muted-foreground leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6">
                 I&apos;m a passionate self-taught programmer with expertise in
                 both frontend and backend technologies. My journey includes
                 building full-stack applications with Node.js, Express, MongoDB,
                 Next.js, TypeScript, and Django. I love creating innovative
                 solutions and turning ideas into reality through code.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 My self-directed learning approach has led me to master multiple
                 technologies including React, Next.js, Node.js, Python, Django,
                 and .NET. I&apos;m constantly exploring new technologies and
@@ -73,7 +70,7 @@ const About: React.FC = () => {
               }
             >
               <Button
-                className="px-8 py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300"
                 size="lg"
                 asChild
               >
@@ -83,7 +80,7 @@ const About: React.FC = () => {
           </div>
 
           {/* Right Column - Decorative Tech Icons */}
-          <div className="relative h-[500px] lg:h-[600px]">
+          <div className="hidden lg:block relative h-[600px]">
             {/* Central code icon */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
               <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-xl animate-float">

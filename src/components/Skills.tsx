@@ -58,26 +58,26 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-14 px-4 relative">
+    <section id="skills" className="py-12 sm:py-16 md:py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
         {/* Skills Tree Structure */}
         <div className="flex justify-center">
           <div className="relative max-w-6xl w-full">
             {/* MY SKILLS - Root Node */}
-            <div className="flex justify-center mb-12">
+            <div className="flex justify-center mb-8 sm:mb-12">
               <div
-                className={`px-8 py-4 bg-card border-2 border-primary rounded-lg ${
+                className={`px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-card border-2 border-primary rounded-lg ${
                   isVisible ? "animate-fade-in" : "opacity-0"
                 }`}
               >
-                <h3 className="text-2xl font-bold text-foreground tracking-wider">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-wider">
                   MY SKILLS
                 </h3>
               </div>
             </div>
 
-            {/* Connecting Lines Container */}
-            <div className="relative mb-8">
+            {/* Connecting Lines Container - Hidden on mobile */}
+            <div className="hidden md:block relative mb-8">
               {/* Vertical line from root */}
               <div className="absolute left-1/2 top-0 w-0.5 h-8 bg-border transform -translate-x-1/2"></div>
 
@@ -91,7 +91,7 @@ const Skills: React.FC = () => {
             </div>
 
             {/* Main Categories Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-0 md:mt-16">
               {/* Frontend */}
               <div
                 className={`${
@@ -100,9 +100,9 @@ const Skills: React.FC = () => {
                     : "opacity-0"
                 }`}
               >
-                <div className="text-center mb-6">
-                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
-                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                <div className="text-center mb-4 sm:mb-6">
+                  <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-base sm:text-lg font-semibold text-primary tracking-wide">
                       FRONTEND
                     </h4>
                   </div>
@@ -111,7 +111,7 @@ const Skills: React.FC = () => {
                   {skillTree.frontend.map((skill, index) => (
                     <div
                       key={skill}
-                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 bg-card/50 border border-primary/30 rounded-md text-xs sm:text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
                       style={{ animationDelay: `${(index + 2) * 50}ms` }}
                     >
                       {skill}
@@ -128,9 +128,9 @@ const Skills: React.FC = () => {
                     : "opacity-0"
                 }`}
               >
-                <div className="text-center mb-6">
-                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
-                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                <div className="text-center mb-4 sm:mb-6">
+                  <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-base sm:text-lg font-semibold text-primary tracking-wide">
                       BACKEND
                     </h4>
                   </div>
@@ -139,7 +139,7 @@ const Skills: React.FC = () => {
                   {skillTree.backend.map((skill, index) => (
                     <div
                       key={skill}
-                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 bg-card/50 border border-primary/30 rounded-md text-xs sm:text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
                       style={{ animationDelay: `${(index + 4) * 50}ms` }}
                     >
                       {skill}
@@ -156,9 +156,9 @@ const Skills: React.FC = () => {
                     : "opacity-0"
                 }`}
               >
-                <div className="text-center mb-6">
-                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
-                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                <div className="text-center mb-4 sm:mb-6">
+                  <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-base sm:text-lg font-semibold text-primary tracking-wide">
                       LANGUAGES
                     </h4>
                   </div>
@@ -167,7 +167,7 @@ const Skills: React.FC = () => {
                   {skillTree.languages.map((skill, index) => (
                     <div
                       key={skill}
-                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 bg-card/50 border border-primary/30 rounded-md text-xs sm:text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
                       style={{ animationDelay: `${(index + 6) * 50}ms` }}
                     >
                       {skill}
@@ -184,9 +184,9 @@ const Skills: React.FC = () => {
                     : "opacity-0"
                 }`}
               >
-                <div className="text-center mb-6">
-                  <div className="inline-block px-6 py-3 bg-card border border-primary/50 rounded-lg">
-                    <h4 className="text-lg font-semibold text-primary tracking-wide">
+                <div className="text-center mb-4 sm:mb-6">
+                  <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-card border border-primary/50 rounded-lg">
+                    <h4 className="text-base sm:text-lg font-semibold text-primary tracking-wide">
                       TOOLS & PLATFORM
                     </h4>
                   </div>
@@ -195,7 +195,7 @@ const Skills: React.FC = () => {
                   {skillTree.tools.map((skill, index) => (
                     <div
                       key={skill}
-                      className="px-4 py-2 bg-card/50 border border-primary/30 rounded-md text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 bg-card/50 border border-primary/30 rounded-md text-xs sm:text-sm text-foreground hover:bg-card hover:border-primary/60 transition-all duration-300"
                       style={{ animationDelay: `${(index + 8) * 50}ms` }}
                     >
                       {skill}

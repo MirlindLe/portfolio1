@@ -129,19 +129,6 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm text-center md:text-left">
-              © {currentYear} Mirlind Leku. All rights reserved.
-            </p>
-            <p className="text-muted-foreground text-sm flex items-center gap-2">
-              Made with <FaHeart className="text-red-500 animate-pulse" /> and
-              lots of ☕
-            </p>
-          </div>
-        </div>
       </div>
     </footer>
   );

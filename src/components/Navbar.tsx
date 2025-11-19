@@ -92,11 +92,11 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
+        className={`md:hidden transition-all duration-300 ease-in-out bg-card/95 backdrop-blur-md ${
           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 bg-card/90 backdrop-blur-md">
+        <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (
             <button
               key={item.name}

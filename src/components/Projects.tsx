@@ -1,23 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import {
-  FaGithub,
-  FaReact,
-  FaNodeJs,
-  FaDatabase,
-  FaHtml5,
-} from "react-icons/fa";
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaDatabase, FaHtml5 } from "react-icons/fa";
 import {
   SiTailwindcss,
   SiExpress,
   SiTypescript,
   SiNextdotjs,
 } from "react-icons/si";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 
 interface Project {
   id: number;
@@ -39,7 +32,7 @@ const projects: Project[] = [
     description:
       "Engineered a comprehensive multi-vendor marketplace using ASP.NET Core Web API (.NET 9) and Next.js 15 with TypeScript, supporting multiple business owners and buyers. Implemented JWT-based authentication, Stripe payment processing, shopping cart functionality, and separate dashboards using MySQL, Entity Framework Core, and Tailwind CSS.",
     image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
     category: "fullstack",
     technologies: [".NET Core", "Next.js", "TypeScript", "MySQL"],
     icons: [
@@ -54,11 +47,11 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "QuickMunch - Full-Stack Food Delivery Platform",
+    title: "QuickMunch - Food Delivery Platform",
     description:
       "Engineered a complete food delivery marketplace using Next.js 15, Node.js/Express.js, MongoDB, and Clerk authentication with multi-role dashboards for customers, restaurant owners, and delivery partners. Implemented Stripe payment processing, real-time order tracking, dynamic restaurant discovery with filtering, and responsive UI using Tailwind CSS and Socket.io.",
     image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
     category: "fullstack",
     technologies: ["Next.js", "Node.js", "MongoDB", "Stripe"],
     icons: [
@@ -77,7 +70,7 @@ const projects: Project[] = [
     description:
       "Modern portfolio website built with Next.js 15 and TypeScript. Features responsive design, smooth animations, interactive components, and contact form integration. Showcases projects, skills, and professional experience with a clean, modern UI using Tailwind CSS.",
     image:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
     category: "web",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     icons: [
@@ -95,7 +88,7 @@ const projects: Project[] = [
     description:
       "Full-stack CEO productivity app with Next.js frontend and .NET backend. Advanced task management, note-taking, and productivity tracking for executives.",
     image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
     category: "fullstack",
     technologies: ["Next.js", "TypeScript", ".NET", "C#"],
     icons: [
@@ -114,7 +107,7 @@ const projects: Project[] = [
     description:
       "Full-stack Airbnb clone with Node.js, Express, MongoDB, and modern UI. Features user authentication, property listings, booking system, and real-time updates.",
     image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop",
     category: "fullstack",
     technologies: ["Node.js", "Express", "MongoDB", "EJS"],
     icons: [
@@ -133,7 +126,7 @@ const projects: Project[] = [
     description:
       "Real-time Django Chat Application with WebSocket support. Features instant messaging, user authentication, and real-time communication.",
     image:
-      "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=500&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&h=600&fit=crop",
     category: "fullstack",
     technologies: ["Django", "Python", "WebSocket", "HTML"],
     icons: [
@@ -149,155 +142,111 @@ const projects: Project[] = [
 ];
 
 const Projects: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(() => {
-    // Initialize visibility based on screen size
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
-      return true;
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    // Skip intersection observer on small screens
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    const element = document.getElementById("projects");
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(1);
 
   return (
     <section id="projects" className="py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            My <span className="text-primary">Projects</span>
+        <div className="text-center mb-4 sm:mb-14">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+            <span className="text-primary">PROJECTS</span>
           </h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Here are some of the projects I&apos;ve built to showcase my skills
-            and creativity
-          </p>
+          <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
-        {/* Projects Grid */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-          role="tabpanel"
-          id="projects-all"
-        >
-          {projects.map((project, index) => (
-            <Card
-              key={project.id}
-              className={`group relative bg-card backdrop-blur-sm border-border rounded-2xl overflow-hidden hover:bg-card/80 transition-all duration-500 md:transform md:hover:scale-105 md:hover:-translate-y-2 ${
-                isVisible ? "animate-fade-in" : "opacity-0"
-              }`}
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <CardContent className="p-0">
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+        {/* Projects Layout - Image Left, List Right */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left Side - Project Image */}
+          <div className="hidden lg:block relative h-[600px] sticky top-24">
+            <div className="relative h-full w-full rounded-2xl overflow-hidden border-2 border-primary/30 shadow-2xl">
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    hoveredProject === project.id ? "opacity-100" : "opacity-0"
+                  }`}
+                >
                   <Image
                     src={project.image}
-                    alt={`Screenshot of ${project.title} project`}
+                    alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover"
+                    priority={project.id === 1}
                   />
-                  {project.featured && (
-                    <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground border-0">
-                      Featured
-                    </Badge>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
                 </div>
+              ))}
 
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                    {project.description}
-                  </p>
+              {/* Project Number Indicator */}
+              <div className="absolute top-8 right-8 text-6xl md:text-8xl font-bold text-white/20">
+                {hoveredProject}
+              </div>
+            </div>
+          </div>
 
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, techIndex) => (
-                      <Badge
-                        key={techIndex}
-                        variant="outline"
-                        className="bg-card text-muted-foreground border-border hover:bg-card/80"
+          {/* Right Side - Project List */}
+          <div className="space-y-4">
+            {projects.map((project) => (
+              <Link
+                key={project.id}
+                href={`/projects/${project.id}`}
+                onMouseEnter={() => setHoveredProject(project.id)}
+                className="block group"
+              >
+                <div
+                  className={`relative border-b-2 transition-all duration-300 py-2 px-4 ${
+                    hoveredProject === project.id
+                      ? "border-primary bg-primary/5"
+                      : "border-border hover:border-primary/50"
+                  }`}
+                >
+                  {/* Mobile Image */}
+                  <div className="lg:hidden relative h-48 w-full rounded-lg overflow-hidden mb-4">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3
+                        className={`text-xl md:text-2xl lg:text-xl font-bold mb-2 transition-colors ${
+                          hoveredProject === project.id
+                            ? "text-primary"
+                            : "text-foreground group-hover:text-primary"
+                        }`}
                       >
-                        <span className="flex items-center gap-2">
-                          {project.icons[techIndex]}
-                          {tech}
-                        </span>
-                      </Badge>
-                    ))}
+                        {project.title}
+                      </h3>
+
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="text-xs px-2 py-1 bg-card border border-primary/30 rounded text-primary"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <FaArrowRight
+                      className={`text-2xl ml-4 transition-all duration-300 ${
+                        hoveredProject === project.id
+                          ? "text-primary translate-x-2"
+                          : "text-muted-foreground group-hover:text-primary group-hover:translate-x-2"
+                      }`}
+                    />
                   </div>
                 </div>
-              </CardContent>
-
-              <CardFooter className="p-6 pt-0">
-                {/* Project Links */}
-                <div className="flex gap-3 w-full">
-                  <Button
-                    variant="outline"
-                    className="flex-1 bg-card text-muted-foreground border-border hover:bg-card/80"
-                    asChild
-                  >
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View ${project.title} source code on GitHub`}
-                    >
-                      <FaGithub className="mr-2" />
-                      Code
-                    </a>
-                  </Button>
-                </div>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <div
-          className={`text-center mt-16 ${
-            isVisible ? "animate-fade-in animation-delay-1000" : "opacity-0"
-          }`}
-        >
-          <div className="bg-card backdrop-blur-sm border border-border rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold text-foreground mb-4">
-              Have a Project in Mind?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              I&apos;m always interested in new opportunities and exciting
-              projects. Let&apos;s discuss how we can work together to bring
-              your ideas to life.
-            </p>
-            <Button
-              className="px-8 py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-              size="lg"
-            >
-              Let&apos;s Talk
-            </Button>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
