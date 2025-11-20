@@ -194,7 +194,7 @@ const Hero: React.FC = () => {
                     className="flex-1 text-sm font-medium hover:bg-primary"
                     asChild
                   >
-                    <a href="/Resume2.pdf" download="Mirlind_Leku_CV.pdf">
+                    <a href="/Resume.pdf" download="Mirlind_Leku_CV.pdf">
                       Download CV
                     </a>
                   </Button>

@@ -313,7 +313,7 @@ export default function About() {
                 size="lg"
                 asChild
               >
-                <a href="/Resume2.pdf" download="Mirlind_Leku_CV.pdf">
+                <a href="/Resume.pdf" download="Mirlind_Leku_CV.pdf">
                   <FaDownload />
                   Download CV
                 </a>
