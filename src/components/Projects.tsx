@@ -145,7 +145,7 @@ const Projects: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(1);
 
   return (
-    <section id="projects" className="py-20 px-4 relative">
+    <section id="projects" className="py-6 md:py-8 px-4 relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-4 sm:mb-14">

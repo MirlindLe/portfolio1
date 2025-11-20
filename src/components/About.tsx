@@ -32,7 +32,7 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <section id="about" className="py-12 sm:py-16 md:py-20 px-4 relative">
+    <section id="about" className="py-5 md:py-7 px-4 relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2 px-4">

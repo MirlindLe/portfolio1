@@ -144,8 +144,8 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="py-6 md:py-8 px-4 relative">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
