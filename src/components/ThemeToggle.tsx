@@ -41,20 +41,20 @@ const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-10 h-10 rounded-lg bg-card border border-border hover:bg-accent transition-all duration-300 flex items-center justify-center group"
+      className="relative w-10 h-10 rounded-lg bg-card border border-border hover:border-primary transition-all duration-300 flex items-center justify-center group"
       aria-label="Toggle theme"
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <div className="relative w-5 h-5">
+      <div className="relative w-5 h-5 flex items-center justify-center">
         <FaSun
-          className={`absolute inset-0 text-primary transition-all duration-300 ${
+          className={`absolute text-primary transition-all duration-300 ${
             isDark
               ? "opacity-0 rotate-90 scale-0"
               : "opacity-100 rotate-0 scale-100"
           }`}
         />
         <FaMoon
-          className={`absolute inset-0 text-primary transition-all duration-300 ${
+          className={`absolute text-primary transition-all duration-300 ${
             isDark
               ? "opacity-100 rotate-0 scale-100"
               : "opacity-0 -rotate-90 scale-0"
