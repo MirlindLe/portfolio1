@@ -4,216 +4,310 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 210 25% 7.8431%;
-    --card: 180 6.6667% 97.0588%;
-    --card-foreground: 210 25% 7.8431%;
+    /* Light Mode Colors - Twitter Blue Focus */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --section-bg: 0 0% 100%; /* #FFFFFF - Pure white */
+    --foreground: 15 23% 6%; /* #0F172A */
+    --text-secondary: 220 13% 28%; /* #475569 */
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 15 23% 6%; /* #0F172A */
+    --card-border: 210 14% 89%; /* #E2E8F0 */
     --popover: 0 0% 100%;
-    --popover-foreground: 210 25% 7.8431%;
-    --primary: 203.8863 88.2845% 53.1373%;
+    --popover-foreground: 15 23% 6%;
+    --primary: 211 100% 50%; /* #1D9BF0 - Twitter Blue */
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 25% 7.8431%;
+    --primary-hover: 210 100% 42%; /* #1A8CD8 - Blue Hover */
+    --secondary: 280 65% 43.1%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 240 1.9608% 90%;
-    --muted-foreground: 210 25% 7.8431%;
-    --accent: 211.5789 51.3514% 92.7451%;
-    --accent-foreground: 203.8863 88.2845% 53.1373%;
-    --destructive: 356.3033 90.5579% 54.3137%;
+    --muted: 220 13% 28%; /* #475569 */
+    --muted-foreground: 220 13% 28%;
+    --accent: 211 100% 50%; /* #1D9BF0 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 201.4286 30.4348% 90.9804%;
-    --input: 200 23.0769% 97.451%;
-    --ring: 202.8169 89.1213% 53.1373%;
-    --chart-1: 203.8863 88.2845% 53.1373%;
-    --chart-2: 159.7826 100% 36.0784%;
-    --chart-3: 42.029 92.8251% 56.2745%;
-    --chart-4: 147.1429 78.5047% 41.9608%;
-    --chart-5: 341.4894 75.2% 50.9804%;
-    --sidebar: 180 6.6667% 97.0588%;
-    --sidebar-foreground: 210 25% 7.8431%;
-    --sidebar-primary: 203.8863 88.2845% 53.1373%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 211.5789 51.3514% 92.7451%;
-    --sidebar-accent-foreground: 203.8863 88.2845% 53.1373%;
-    --sidebar-border: 205 25% 90.5882%;
-    --sidebar-ring: 202.8169 89.1213% 53.1373%;
-    --font-sans: Inter, ui-sans-serif, sans-serif, system-ui;
+    --border: 210 14% 89%; /* #E2E8F0 */
+    --input: 210 14% 89%; /* #E2E8F0 */
+    --ring: 211 100% 50%; /* #1D9BF0 */
+    --shadow-card: 0 3px 12px rgba(0, 0, 0, 0.05);
+    --shadow-blue-glow: rgba(29, 155, 240, 0.15);
+    --radius: 0.5rem;
+    --font-sans: Inter, "SF Pro Display", system-ui, -apple-system, sans-serif;
     --font-serif: Belgrano, ui-serif, serif;
     --font-mono: Menlo, monospace;
-    --radius: 1.3rem;
-    --shadow-x: 0px;
-    --shadow-y: 2px;
-    --shadow-blur: 0px;
-    --shadow-spread: 0px;
-    --shadow-opacity: 0;
-    --shadow-color: rgba(29, 161, 242, 0.15);
-    --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-sm: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-md: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-lg: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
-    --tracking-normal: 0em;
-    --spacing: 0.25rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 200 6.6667% 91.1765%;
-    --card: 228 9.8039% 10%;
-    --card-foreground: 0 0% 85.098%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 200 6.6667% 91.1765%;
-    --primary: 202.8169 89.1213% 53.1373%;
+    /* Dark Mode Colors - Twitter Blue Focus */
+    --background: 12 20% 8%; /* #0B1220 */
+    --section-bg: 15 23% 6%; /* #0F172A */
+    --foreground: 210 40% 98%; /* #F1F5F9 */
+    --text-secondary: 217 33% 58%; /* #94A3B8 */
+    --card: 15 35% 9%; /* #0F1724 */
+    --card-foreground: 210 40% 98%; /* #F1F5F9 */
+    --card-border: 220 26% 18%; /* #1E293B */
+    --popover: 12 20% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 211 100% 50%; /* #1D9BF0 - Twitter Blue */
     --primary-foreground: 0 0% 100%;
-    --secondary: 204.5455 91.6667% 95.2941%;
-    --secondary-foreground: 202.8169 89.1213% 53.1373%;
-    --muted: 0 0% 9.4118%;
-    --muted-foreground: 210 3.3898% 46.2745%;
-    --accent: 205.7143 70% 7.8431%;
-    --accent-foreground: 203.7736 87.6033% 52.549%;
-    --destructive: 356.3033 90.5579% 54.3137%;
+    --primary-hover: 210 100% 42%; /* #1A8CD8 */
+    --secondary: 280 65% 43.1%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 217 33% 58%; /* #94A3B8 */
+    --muted-foreground: 217 33% 58%;
+    --accent: 211 100% 50%; /* #1D9BF0 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 5.2632% 14.902%;
-    --input: 207.6923 27.6596% 18.4314%;
-    --ring: 202.8169 89.1213% 53.1373%;
-    --chart-1: 203.8863 88.2845% 53.1373%;
-    --chart-2: 159.7826 100% 36.0784%;
-    --chart-3: 42.029 92.8251% 56.2745%;
-    --chart-4: 147.1429 78.5047% 41.9608%;
-    --chart-5: 341.4894 75.2% 50.9804%;
-    --sidebar: 228 9.8039% 10%;
-    --sidebar-foreground: 0 0% 85.098%;
-    --sidebar-primary: 202.8169 89.1213% 53.1373%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 205.7143 70% 7.8431%;
-    --sidebar-accent-foreground: 203.7736 87.6033% 52.549%;
-    --sidebar-border: 205.7143 15.7895% 26.0784%;
-    --sidebar-ring: 202.8169 89.1213% 53.1373%;
-    --font-sans: Inter, ui-sans-serif, sans-serif, system-ui;
-    --font-serif: Belgrano, ui-serif, serif;
-    --font-mono: Menlo, monospace;
-    --radius: 1.3rem;
-    --shadow-x: 0px;
-    --shadow-y: 2px;
-    --shadow-blur: 0px;
-    --shadow-spread: 0px;
-    --shadow-opacity: 0;
-    --shadow-color: rgba(29, 161, 242, 0.25);
-    --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-sm: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 1px 2px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-md: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 2px 4px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-lg: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 4px 6px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0),
-      0px 8px 10px -1px hsl(202.8169 89.1213% 53.1373% / 0);
-    --shadow-2xl: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
+    --border: 220 26% 18%; /* #1E293B */
+    --input: 220 26% 18%; /* #1E293B */
+    --ring: 211 100% 50%; /* #1D9BF0 */
+    --shadow-card: 0 3px 12px rgba(0, 0, 0, 0.2);
+    --shadow-blue-glow: rgba(29, 155, 240, 0.15);
   }
 
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: var(--font-sans);
+  }
+
+  /* Typography - Silicon Valley System */
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.55;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  h4 {
+    @apply text-xl font-semibold;
+    line-height: 1.55;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: hsl(var(--text-secondary));
+  }
+
+  body {
+    @apply text-base;
+    line-height: 1.55;
+    color: hsl(var(--foreground));
+  }
+
+  /* Spacing Utilities - Silicon Valley System */
+  .container-padding {
+    @apply px-6 md:px-12 lg:px-20;
+  }
+
+  .section-spacing {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Smooth Transitions */
+  /* Focus Styles for Accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-left {
+    animation: fadeInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-right {
+    animation: fadeInRight 0.6s ease-out forwards;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-2;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-accent/20;
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@layer components {
+  /* Utility Classes for Common Patterns */
+  .btn-base {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-accent;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* Primary Button - Twitter Blue */
+  .btn-primary {
+    @apply btn-base text-white;
+    background-color: hsl(var(--primary));
   }
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
+  .btn-primary:hover {
+    background-color: hsl(var(--primary-hover));
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .btn-primary:active {
+    transform: scale(0.98);
   }
-}
 
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
+  /* Secondary Button - Silicon Valley Violet */
+  .btn-secondary {
+    @apply btn-base text-white;
+    background-color: hsl(var(--secondary));
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  .btn-secondary:hover {
+    background-color: hsl(280 65% 35%);
   }
-}
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
+  /* Outline Button - Twitter Blue Border */
+  .btn-outline {
+    @apply btn-base border-2 text-accent;
+    border-color: hsl(var(--primary));
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  .btn-outline:hover {
+    background-color: hsl(var(--primary) / 0.05);
   }
-}
 
-/* Animation Classes */
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
+  /* Card Base */
+  .card-base {
+    @apply rounded-xl p-6 transition-all duration-300;
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--card-border));
+    box-shadow: var(--shadow-card);
+  }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
-}
+  /* Card Hover with Blue Glow */
+  .card-hover {
+    @apply card-base hover:-translate-y-1 cursor-pointer;
+  }
 
-.animate-fade-in-left {
-  animation: fadeInLeft 0.8s ease-out forwards;
-}
+  .card-hover:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 12px 24px var(--shadow-blue-glow);
+  }
 
-.animate-fade-in-right {
-  animation: fadeInRight 0.8s ease-out forwards;
-}
+  /* Input Styles */
+  .input-base {
+    @apply px-4 py-2.5 rounded-lg transition-all duration-300;
+    background-color: hsl(var(--input));
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
 
-/* Animation Delays */
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animation-delay-400 {
-  animation-delay: 400ms;
-}
-
-.animation-delay-600 {
-  animation-delay: 600ms;
-}
-
-.animation-delay-800 {
-  animation-delay: 800ms;
-}
-
-.animation-delay-1000 {
-  animation-delay: 1000ms;
+  .input-base:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 0 3px var(--shadow-blue-glow);
+  }
 }

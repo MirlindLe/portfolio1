@@ -1,141 +1,90 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { FaCode } from "react-icons/fa";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiNodedotjs,
-  SiMongodb,
-  SiTailwindcss,
-  SiDotnet,
-} from "react-icons/si";
-import { Button } from "@/components/ui/button";
+import React from "react";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const About: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    const element = document.getElementById("about");
-    if (element) observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
+  const technologies = [
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "MongoDB",
+    ".NET Core",
+    "Tailwind CSS",
+  ];
 
   return (
-    <section id="about" className="py-5 md:py-7 px-4 relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2 px-4">
-            Everything About <span className="text-primary">Mirlind</span>
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Left Column - Content */}
-          <div className="space-y-4 sm:space-y-6 flex flex-col justify-center">
-            <div
-              className={
-                isVisible ? "animate-fade-in animation-delay-200" : "opacity-0"
-              }
-            >
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6">
-                I&apos;m a passionate self-taught programmer with expertise in
-                both frontend and backend technologies. My journey includes
-                building full-stack applications with Node.js, Express, MongoDB,
-                Next.js, TypeScript, and Django. I love creating innovative
-                solutions and turning ideas into reality through code.
-              </p>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                My self-directed learning approach has led me to master multiple
-                technologies including React, Next.js, Node.js, Python, Django,
-                and .NET. I&apos;m constantly exploring new technologies and
-                building projects that showcase my skills and passion for
-                development.
-              </p>
+    <section id="about" className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row gap-16 items-center">
+          {/* Image Section */}
+          <div className="w-full md:w-1/3 relative">
+            <div className="aspect-square rounded-2xl overflow-hidden relative group">
+              <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+              <Image
+                src="/ProfileAI.png"
+                alt="Profile"
+                fill
+                className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-300"
+              />
             </div>
-
-            <div
-              className={
-                isVisible ? "animate-fade-in animation-delay-400" : "opacity-0"
-              }
-            >
-              <Button
-                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-300"
-                size="lg"
-                asChild
-              >
-                <a href="/about">More About Me</a>
-              </Button>
-            </div>
+            <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-primary rounded-2xl -z-10 translate-x-4 translate-y-4 hidden md:block"></div>
           </div>
 
-          {/* Right Column - Decorative Tech Icons */}
-          <div className="hidden lg:block relative h-[600px]">
-            {/* Central code icon */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="w-32 h-32 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center border-2 border-primary/30 shadow-xl animate-float">
-                <FaCode className="text-primary text-5xl" />
-              </div>
+          {/* Content Section */}
+          <div className="w-full md:w-2/3">
+            <h2 className="flex items-center text-3xl font-bold text-foreground mb-8">
+              About Me
+              <span className="ml-4 h-px bg-border flex-grow max-w-xs"></span>
+            </h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                I&apos;m a{" "}
+                <span className="text-primary font-semibold">
+                  full-stack developer
+                </span>{" "}
+                specializing in building{" "}
+                <span className="text-primary font-semibold">
+                  scalable web applications
+                </span>{" "}
+                using Next.js, Node.js, Django, and .NET.
+              </p>
+              <p>
+                I&apos;ve built full platforms including multivendor ecommerce
+                systems with{" "}
+                <span className="text-primary font-semibold">
+                  Stripe integration
+                </span>
+                , real-time chat applications with{" "}
+                <span className="text-primary font-semibold">
+                  WebSocket support
+                </span>
+                , Airbnb-style booking platforms, and food delivery marketplaces
+                with role-based dashboards.
+              </p>
+              <p>
+                As a self-taught developer, I&apos;ve mastered modern
+                technologies and best practices through hands-on experience
+                building production-ready applications. I love tackling complex
+                challenges and transforming ideas into elegant, scalable
+                solutions.
+              </p>
+              <p>
+                Here are a few technologies I&apos;ve been working with
+                recently:
+              </p>
             </div>
-
-            {/* React icon */}
-            <div className="absolute top-[10%] right-[20%] animate-float animation-delay-500">
-              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
-                <SiReact className="text-[#61DAFB] text-4xl" />
-              </div>
-            </div>
-
-            {/* Next.js icon */}
-            <div className="absolute top-[25%] left-[10%] animate-float animation-delay-1000">
-              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
-                <SiNextdotjs className="text-foreground text-4xl" />
-              </div>
-            </div>
-
-            {/* TypeScript icon */}
-            <div className="absolute top-[40%] right-[5%] animate-float animation-delay-1500">
-              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
-                <SiTypescript className="text-[#3178C6] text-4xl" />
-              </div>
-            </div>
-
-            {/* Node.js icon */}
-            <div className="absolute bottom-[30%] left-[5%] animate-float animation-delay-2000">
-              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
-                <SiNodedotjs className="text-[#339933] text-4xl" />
-              </div>
-            </div>
-
-            {/* MongoDB icon */}
-            <div className="absolute bottom-[20%] right-[15%] animate-float animation-delay-2500">
-              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
-                <SiMongodb className="text-[#47A248] text-4xl" />
-              </div>
-            </div>
-
-            {/* Tailwind icon */}
-            <div className="absolute top-[60%] left-[20%] animate-float animation-delay-3000">
-              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
-                <SiTailwindcss className="text-[#06B6D4] text-4xl" />
-              </div>
-            </div>
-
-            {/* .NET */}
-            <div className="absolute top-[60%] left-[20%] animate-float animation-delay-3000">
-              <div className="w-20 h-20 bg-card/50 backdrop-blur-sm rounded-lg flex items-center justify-center border shadow-lg">
-                <SiDotnet className="text-foreground text-4xl" />
-              </div>
-            </div>
+            <ul className="grid grid-cols-2 gap-4 mt-8 font-mono text-sm text-muted-foreground">
+              {technologies.map((tech, index) => (
+                <li key={index} className="flex items-center">
+                  <ChevronRight className="text-primary mr-2 w-4 h-4" />
+                  {tech}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

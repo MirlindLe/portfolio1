@@ -55,31 +55,18 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-card/30 backdrop-blur-sm border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-card/30 backdrop-blur-sm border-t border-border py-12">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-1">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Mirlind Leku
             </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
-              A passionate full-stack developer dedicated to creating innovative
-              digital solutions and turning ideas into reality through code and
-              creativity.
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              Full-Stack Developer specializing in building scalable web
+              applications with modern technologies.
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  className={`w-12 h-12 bg-card border border-border rounded-xl flex items-center justify-center text-muted-foreground text-xl hover:bg-primary hover:text-primary-foreground transform hover:scale-110 transition-all duration-300`}
-                  title={social.name}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -92,7 +79,7 @@ const Footer: React.FC = () => {
                 <li key={link.name}>
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-300 hover:translate-x-1 transform"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </button>
@@ -104,29 +91,45 @@ const Footer: React.FC = () => {
           {/* Contact Info */}
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-4">
-              Get in Touch
+              Connect
             </h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>
+            <div className="space-y-3 mb-4">
+              <a
+                href="mailto:lekumirlind@gmail.com"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors block"
+              >
+                lekumirlind@gmail.com
+              </a>
+            </div>
+            <div className="flex space-x-4">
+              {socialLinks.map((social) => (
                 <a
-                  href="mailto:lekumirlind@gmail.com"
-                  className="hover:text-foreground transition-colors"
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-background border border-border rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transform hover:scale-110 transition-all duration-300"
+                  title={social.name}
                 >
-                  lekumirlind@gmail.com
+                  {social.icon}
                 </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+38349425136"
-                  className="hover:text-foreground transition-colors"
-                >
-                  +383 (49) 425-136
-                </a>
-              </li>
-              <li className="hover:text-foreground transition-colors">
-                Drenas, Kosovo
-              </li>
-            </ul>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground text-center md:text-left">
+              © {currentYear} Mirlind Leku — Full Stack Developer. All rights
+              reserved.
+            </p>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <span>Built with</span>
+              <FaHeart className="text-red-500 animate-pulse" />
+              <span>using Next.js & TypeScript</span>
+            </div>
           </div>
         </div>
       </div>

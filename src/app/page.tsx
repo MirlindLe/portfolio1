@@ -38,15 +38,6 @@ export default function Home() {
     <div className="App min-h-screen bg-background">
       <Navbar />
       <main className="relative overflow-hidden">
-        {/* Global Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 -right-40 w-80 h-80 bg-teal-500 dark:bg-primary/30 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-          <div className="absolute top-1/4 -left-40 w-80 h-80 bg-cyan-500 dark:bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-emerald-500 dark:bg-primary/25 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-          <div className="absolute top-3/4 -left-40 w-80 h-80 bg-teal-500 dark:bg-primary/30 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-1000"></div>
-          <div className="absolute bottom-0 -right-40 w-80 h-80 bg-cyan-500 dark:bg-primary/20 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-3000"></div>
-        </div>
-
         <Hero />
         <About />
         <Skills />

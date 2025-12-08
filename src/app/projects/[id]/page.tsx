@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { FaGithub, FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
+import { ArrowLeft, Github, ExternalLink } from "lucide-react";
 import { FaReact, FaNodeJs, FaDatabase, FaHtml5 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 interface Project {
-  id: number;
+  id: string;
   title: string;
   description: string;
   fullDescription: string;
@@ -33,7 +33,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 1,
+    id: "ecommerce-platform",
     title: "Full-Stack Ecommerce Multivendor Platform",
     description:
       "Engineered a comprehensive multi-vendor marketplace using ASP.NET Core Web API (.NET 9) and Next.js 15 with TypeScript.",
@@ -83,7 +83,7 @@ const projects: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: "quickmunch",
     title: "QuickMunch - Food Delivery Platform",
     description:
       "Engineered a complete food delivery marketplace using Next.js 15, Node.js/Express.js, and MongoDB.",
@@ -133,7 +133,93 @@ const projects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: "airbnb-clone",
+    title: "Airbnb Clone - Booking Platform",
+    description:
+      "Full-stack Airbnb clone with Node.js, Express, MongoDB, and modern UI.",
+    fullDescription:
+      "A full-featured clone of Airbnb's platform, enabling users to list properties, search for accommodations, and make bookings. Built with Node.js and Express for the backend, MongoDB for data storage, and EJS for server-side rendering. The application includes user authentication, property management, booking system, and real-time updates.",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=800&fit=crop",
+    category: "fullstack",
+    technologies: ["Node.js", "Express", "MongoDB", "EJS", "Cloudinary"],
+    icons: [
+      <FaNodeJs key="node" />,
+      <SiExpress key="express" />,
+      <FaDatabase key="db" />,
+      <FaReact key="ejs" />,
+    ],
+    github: "https://github.com/mirlindleku/airbnb-clone",
+    live: "",
+    featured: true,
+    features: [
+      "User authentication with Passport.js",
+      "Property listing and management",
+      "Advanced search with filters",
+      "Booking system with date range selection",
+      "User reviews and ratings",
+      "Image upload with Cloudinary",
+      "Interactive maps integration",
+      "Responsive design",
+    ],
+    challenges: [
+      "Implementing complex search and filter logic",
+      "Managing booking conflicts and availability",
+      "Handling file uploads efficiently",
+      "Building responsive layouts for various screen sizes",
+    ],
+    learnings: [
+      "Express.js middleware and routing patterns",
+      "MongoDB schema design for complex relationships",
+      "Authentication strategies with Passport.js",
+      "Server-side rendering with EJS",
+    ],
+  },
+  {
+    id: "tasknotes-app",
+    title: "TaskNotesApp - CEO Productivity Tool",
+    description:
+      "Full-stack CEO productivity app with Next.js frontend and .NET backend.",
+    fullDescription:
+      "TaskNotesApp is a comprehensive productivity application designed for executives and CEOs. The application combines advanced task management, note-taking capabilities, and productivity tracking in a unified platform. Built with Next.js for the frontend and .NET for the backend, it provides a seamless user experience with real-time synchronization and intelligent task organization.",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&fit=crop",
+    category: "fullstack",
+    technologies: ["Next.js", "TypeScript", ".NET Core", "C#"],
+    icons: [
+      <SiNextdotjs key="next" />,
+      <SiTypescript key="ts" />,
+      <FaReact key="dotnet" />,
+      <FaReact key="csharp" />,
+    ],
+    github: "https://github.com/mirlindleku/TaskNotesApp",
+    live: "",
+    featured: false,
+    features: [
+      "Advanced task management with priorities and deadlines",
+      "Rich text note-taking with formatting",
+      "Real-time synchronization across devices",
+      "Productivity analytics and insights",
+      "Calendar integration",
+      "Task categorization and tagging",
+      "Search and filter functionality",
+      "Export capabilities",
+    ],
+    challenges: [
+      "Implementing real-time sync without conflicts",
+      "Building a rich text editor with all features",
+      "Optimizing database queries for performance",
+      "Ensuring data security and privacy",
+    ],
+    learnings: [
+      ".NET Core API development",
+      "Real-time data synchronization patterns",
+      "Rich text editor implementation",
+      "Building scalable backend architectures",
+    ],
+  },
+  {
+    id: "portfolio-website",
     title: "Portfolio Website",
     description:
       "Modern portfolio website built with Next.js 15 and TypeScript.",
@@ -175,101 +261,15 @@ const projects: Project[] = [
     ],
   },
   {
-    id: 4,
-    title: "TaskNotesApp",
-    description:
-      "Full-stack CEO productivity app with Next.js frontend and .NET backend.",
-    fullDescription:
-      "TaskNotesApp is a comprehensive productivity application designed for executives and CEOs. The application combines advanced task management, note-taking capabilities, and productivity tracking in a unified platform. Built with Next.js for the frontend and .NET for the backend, it provides a seamless user experience with real-time synchronization and intelligent task organization.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=800&fit=crop",
-    category: "fullstack",
-    technologies: ["Next.js", "TypeScript", ".NET", "C#", "SQL Server"],
-    icons: [
-      <SiNextdotjs key="next" />,
-      <SiTypescript key="ts" />,
-      <FaReact key="dotnet" />,
-      <FaReact key="csharp" />,
-    ],
-    github: "https://github.com/mirlindleku/TaskNotesApp",
-    live: "",
-    featured: false,
-    features: [
-      "Advanced task management with priorities and deadlines",
-      "Rich text note-taking with formatting",
-      "Real-time synchronization across devices",
-      "Productivity analytics and insights",
-      "Calendar integration",
-      "Task categorization and tagging",
-      "Search and filter functionality",
-      "Export capabilities",
-    ],
-    challenges: [
-      "Implementing real-time sync without conflicts",
-      "Building a rich text editor with all features",
-      "Optimizing database queries for performance",
-      "Ensuring data security and privacy",
-    ],
-    learnings: [
-      ".NET Core API development",
-      "Real-time data synchronization patterns",
-      "Rich text editor implementation",
-      "Building scalable backend architectures",
-    ],
-  },
-  {
-    id: 5,
-    title: "Airbnb Clone",
-    description:
-      "Full-stack Airbnb clone with Node.js, Express, MongoDB, and modern UI.",
-    fullDescription:
-      "A full-featured clone of Airbnb's platform, enabling users to list properties, search for accommodations, and make bookings. Built with Node.js and Express for the backend, MongoDB for data storage, and EJS for server-side rendering. The application includes user authentication, property management, booking system, and real-time updates.",
-    image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=800&fit=crop",
-    category: "fullstack",
-    technologies: ["Node.js", "Express", "MongoDB", "EJS", "Passport.js"],
-    icons: [
-      <FaNodeJs key="node" />,
-      <SiExpress key="express" />,
-      <FaDatabase key="db" />,
-      <FaReact key="ejs" />,
-    ],
-    github: "https://github.com/mirlindleku/airbnb-clone",
-    live: "",
-    featured: false,
-    features: [
-      "User authentication with Passport.js",
-      "Property listing and management",
-      "Advanced search with filters",
-      "Booking system with date range selection",
-      "User reviews and ratings",
-      "Image upload and management",
-      "Interactive maps integration",
-      "Responsive design",
-    ],
-    challenges: [
-      "Implementing complex search and filter logic",
-      "Managing booking conflicts and availability",
-      "Handling file uploads efficiently",
-      "Building responsive layouts for various screen sizes",
-    ],
-    learnings: [
-      "Express.js middleware and routing patterns",
-      "MongoDB schema design for complex relationships",
-      "Authentication strategies with Passport.js",
-      "Server-side rendering with EJS",
-    ],
-  },
-  {
-    id: 6,
-    title: "Django Chat Application",
+    id: "django-chat",
+    title: "Real-Time Chat Application",
     description: "Real-time Django Chat Application with WebSocket support.",
     fullDescription:
       "A real-time chat application built with Django and Django Channels, enabling instant messaging between users. The application uses WebSockets for real-time communication, providing a seamless chat experience. Features include user authentication, chat rooms, message history, and typing indicators.",
     image:
       "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=1200&h=800&fit=crop",
     category: "fullstack",
-    technologies: ["Django", "Python", "WebSocket", "HTML", "Channels"],
+    technologies: ["Django", "Python", "WebSocket", "Redis"],
     icons: [
       <FaReact key="django" />,
       <FaReact key="python" />,
@@ -302,12 +302,139 @@ const projects: Project[] = [
       "WebSocket connection management",
     ],
   },
+  {
+    id: "crypto-dashboard",
+    title: "Crypto Trading Dashboard",
+    description:
+      "Real-time cryptocurrency tracking dashboard with live price updates.",
+    fullDescription:
+      "A comprehensive cryptocurrency tracking dashboard that provides real-time price updates, portfolio management, and interactive charts. Built with React and integrating with the CoinGecko API, the application offers users a complete view of the crypto market with detailed analytics and visualization tools.",
+    image:
+      "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=1200&h=800&fit=crop",
+    category: "web",
+    technologies: ["React", "Chart.js", "REST API", "TailwindCSS"],
+    icons: [
+      <FaReact key="react" />,
+      <FaReact key="chart" />,
+      <FaReact key="api" />,
+    ],
+    github: "#",
+    live: "",
+    featured: false,
+    features: [
+      "Real-time cryptocurrency price updates",
+      "Portfolio management and tracking",
+      "Interactive price charts with Chart.js",
+      "Market cap and volume statistics",
+      "Price alerts and notifications",
+      "Watchlist functionality",
+      "Historical data visualization",
+      "Responsive design for all devices",
+    ],
+    challenges: [
+      "Handling real-time data updates efficiently",
+      "Implementing complex chart visualizations",
+      "Managing API rate limits",
+      "Optimizing performance with large datasets",
+    ],
+    learnings: [
+      "Working with real-time APIs",
+      "Chart.js advanced features",
+      "State management for real-time data",
+      "Performance optimization techniques",
+    ],
+  },
+  {
+    id: "task-manager",
+    title: "Agile Task Manager",
+    description:
+      "Kanban-style task management tool for agile teams with drag-and-drop.",
+    fullDescription:
+      "An agile task management application designed for modern teams. Built with Vue.js and Firebase, the application provides a Kanban-style board with drag-and-drop functionality, sprint planning tools, and team collaboration features. Perfect for managing projects following agile methodologies.",
+    image:
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop",
+    category: "web",
+    technologies: ["Vue.js", "Firebase", "Vuex", "Vuetify"],
+    icons: [
+      <FaReact key="vue" />,
+      <FaReact key="firebase" />,
+      <FaReact key="vuex" />,
+    ],
+    github: "#",
+    live: "",
+    featured: false,
+    features: [
+      "Kanban board with drag-and-drop",
+      "Sprint planning and management",
+      "Team collaboration tools",
+      "Task assignment and tracking",
+      "Real-time updates with Firebase",
+      "Custom workflows and statuses",
+      "Activity timeline and history",
+      "Analytics and reporting",
+    ],
+    challenges: [
+      "Implementing smooth drag-and-drop functionality",
+      "Managing real-time collaboration",
+      "Designing intuitive user workflows",
+      "Handling complex state management",
+    ],
+    learnings: [
+      "Vue.js composition API",
+      "Firebase real-time database",
+      "Vuex state management patterns",
+      "Building collaborative applications",
+    ],
+  },
+  {
+    id: "weather-app",
+    title: "Weather Forecast App",
+    description:
+      "Beautiful weather application with 7-day forecasts and weather maps.",
+    fullDescription:
+      "A beautiful and intuitive weather forecast application that provides accurate weather information for any location. Built with React and integrating with the OpenWeatherMap API, the app features 7-day forecasts, location search, hourly predictions, and interactive weather maps with a clean, modern interface.",
+    image:
+      "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=1200&h=800&fit=crop",
+    category: "web",
+    technologies: ["React", "OpenWeather API", "SCSS", "Axios"],
+    icons: [
+      <FaReact key="react" />,
+      <FaReact key="api" />,
+      <FaReact key="scss" />,
+    ],
+    github: "#",
+    live: "",
+    featured: false,
+    features: [
+      "7-day weather forecast",
+      "Hourly weather predictions",
+      "Location search and autocomplete",
+      "Current weather conditions",
+      "Weather maps and radar",
+      "Temperature unit conversion",
+      "Favorite locations",
+      "Beautiful UI with weather animations",
+    ],
+    challenges: [
+      "Integrating with external weather API",
+      "Handling geolocation data",
+      "Creating responsive weather visualizations",
+      "Managing API error states gracefully",
+    ],
+    learnings: [
+      "Working with third-party APIs",
+      "Geolocation API implementation",
+      "SCSS advanced styling techniques",
+      "Error handling and loading states",
+    ],
+  },
 ];
 
 export default function ProjectDetail() {
   const params = useParams();
-  const projectId = parseInt(params.id as string);
+  const projectId = params.id as string;
   const project = projects.find((p) => p.id === projectId);
+  const currentIndex = projects.findIndex((p) => p.id === projectId);
 
   if (!project) {
     return (
@@ -318,7 +445,7 @@ export default function ProjectDetail() {
           </h1>
           <Link href="/#projects">
             <Button className="bg-primary hover:bg-primary/90">
-              <FaArrowLeft className="mr-2" />
+              <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Projects
             </Button>
           </Link>
@@ -326,6 +453,9 @@ export default function ProjectDetail() {
       </div>
     );
   }
+
+  const nextProject =
+    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
   return (
     <div className="min-h-screen py-20 px-4">
@@ -336,7 +466,7 @@ export default function ProjectDetail() {
             variant="outline"
             className="border-primary/50 hover:bg-primary/10"
           >
-            <FaArrowLeft className="mr-2" />
+            <ArrowLeft className="mr-2 w-4 h-4" />
             Back to Projects
           </Button>
         </Link>
@@ -366,24 +496,26 @@ export default function ProjectDetail() {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4">
-            <Button className="bg-primary hover:bg-primary/90" asChild>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub className="mr-2" />
-                View Source Code
-              </a>
-            </Button>
-            {project.live && (
+            {project.github && project.github !== "#" && (
+              <Button className="bg-primary hover:bg-primary/90" asChild>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="mr-2 w-4 h-4" />
+                  View Source Code
+                </a>
+              </Button>
+            )}
+            {project.live && project.live !== "#" && (
               <Button variant="outline" className="border-primary/50" asChild>
                 <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaExternalLinkAlt className="mr-2" />
+                  <ExternalLink className="mr-2 w-4 h-4" />
                   Live Demo
                 </a>
               </Button>
@@ -495,14 +627,14 @@ export default function ProjectDetail() {
             </div>
 
             {/* Next Project */}
-            {projectId < projects.length && (
+            {nextProject && (
               <div className="bg-card/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-foreground mb-4">
                   Next Project
                 </h3>
-                <Link href={`/projects/${projectId + 1}`}>
+                <Link href={`/projects/${nextProject.id}`}>
                   <p className="text-primary hover:underline font-medium">
-                    {projects[projectId].title}
+                    {nextProject.title}
                   </p>
                 </Link>
               </div>
