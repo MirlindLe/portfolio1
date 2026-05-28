@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { Sun, Moon } from "lucide-react";
 
 const ThemeToggle: React.FC = () => {
   const [isDark, setIsDark] = useState<boolean>(() => {
@@ -9,7 +9,7 @@ const ThemeToggle: React.FC = () => {
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme");
       const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
+        "(prefers-color-scheme: dark)",
       ).matches;
       return savedTheme === "dark" || (!savedTheme && prefersDark);
     }
